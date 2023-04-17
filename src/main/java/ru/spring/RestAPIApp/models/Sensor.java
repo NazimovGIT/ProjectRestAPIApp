@@ -19,7 +19,7 @@ public class Sensor implements Serializable {  //Serializable т.к. внешн�
     private String name;
 
 /*    @OneToMany(mappedBy = "sensor")
-    private List<Measurement> measurements;*/ //не нужно, измерения конкретного сенсора не запрашиваются
+    private List<Measurement> measurements;*/ //не нужно, т.к. измерения конкретного сенсора не запрашиваются
 
     public int getId() {
         return id;

@@ -34,7 +34,6 @@ public class SensorsController {
     @PostMapping("/registration")
     public ResponseEntity<HttpStatus> registration(@RequestBody @Valid SensorDTO sensorDTO,
                                                BindingResult bindingResult){
-        //@RequestBody конвертирует принимаемый JSON в объект после успешной валидации
         sensorValidator.validate(sensorDTO, bindingResult);
         if (bindingResult.hasErrors()){
             throw new SensorNotRegisteredException(getErrorMessage(bindingResult));
@@ -58,7 +57,6 @@ public class SensorsController {
                         (e.getMessage(),    //исключение уже приняло сообщение при выбросе
                         System.currentTimeMillis());
 
-        //возвращаем обертку ResponseEntity над нашим объектом-ошибкой
         //в HTTP в теле ответа будет response и статус в заголовке
         return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);    //BAD_REQUEST - статус ошибки 400
     }
